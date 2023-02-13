@@ -84,9 +84,10 @@ class DateRange extends Component {
       const nextFocusRangeIndex = findNextRangeIndex(this.props.ranges, focusedRange[0]);
       nextFocusRange = [nextFocusRangeIndex, 0];
     }
+    const selectionType = value?.selectionType ?? 'custom'
     return {
       wasValid: !(inValidDatesWithinRange.length > 0),
-      range: { startDate, endDate },
+      range: { startDate, endDate,selectionType},
       nextFocusRange: nextFocusRange,
     };
   };

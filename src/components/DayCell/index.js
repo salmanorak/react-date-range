@@ -190,6 +190,7 @@ export const rangeShape = PropTypes.shape({
   autoFocus: PropTypes.bool,
   disabled: PropTypes.bool,
   showDateDisplay: PropTypes.bool,
+  selectionType:PropTypes.string,
 });
 
 DayCell.propTypes = {

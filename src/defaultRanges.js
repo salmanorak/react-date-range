@@ -47,6 +47,7 @@ export const defaultStaticRanges = createStaticRanges([
     range: () => ({
       startDate: defineds.startOfToday,
       endDate: defineds.endOfToday,
+      selectionType:'today',
     }),
   },
   {
@@ -54,6 +55,7 @@ export const defaultStaticRanges = createStaticRanges([
     range: () => ({
       startDate: defineds.startOfYesterday,
       endDate: defineds.endOfYesterday,
+      selectionType:'yesterday',
     }),
   },
 
@@ -62,6 +64,7 @@ export const defaultStaticRanges = createStaticRanges([
     range: () => ({
       startDate: defineds.startOfWeek,
       endDate: defineds.endOfWeek,
+      selectionType: 'thisWeek',
     }),
   },
   {
@@ -69,6 +72,7 @@ export const defaultStaticRanges = createStaticRanges([
     range: () => ({
       startDate: defineds.startOfLastWeek,
       endDate: defineds.endOfLastWeek,
+      selectionType: 'lastWeek',
     }),
   },
   {
@@ -76,6 +80,7 @@ export const defaultStaticRanges = createStaticRanges([
     range: () => ({
       startDate: defineds.startOfMonth,
       endDate: defineds.endOfMonth,
+      selectionType: 'thisMonth',
     }),
   },
   {
@@ -83,6 +88,7 @@ export const defaultStaticRanges = createStaticRanges([
     range: () => ({
       startDate: defineds.startOfLastMonth,
       endDate: defineds.endOfLastMonth,
+      selectionType: 'lastMonth',
     }),
   },
 ]);
@@ -94,13 +100,14 @@ export const defaultInputRanges = [
       return {
         startDate: addDays(defineds.startOfToday, (Math.max(Number(value), 1) - 1) * -1),
         endDate: defineds.endOfToday,
+        selectionType: `to_${value}`,
       };
     },
     getCurrentValue(range) {
       if (!isSameDay(range.endDate, defineds.endOfToday)) return '-';
       if (!range.startDate) return '∞';
       return differenceInCalendarDays(defineds.endOfToday, range.startDate) + 1;
-    },
+    }
   },
   {
     label: 'days starting today',
@@ -109,6 +116,7 @@ export const defaultInputRanges = [
       return {
         startDate: today,
         endDate: addDays(today, Math.max(Number(value), 1) - 1),
+        selectionType: `from_${value}`,
       };
     },
     getCurrentValue(range) {
