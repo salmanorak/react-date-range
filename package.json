@@ -1,6 +1,6 @@
 {
   "name": "@salman.orak/react-date-range",
-  "version": "1.4.3",
+  "version": "1.4.4",
   "description": "A React component for choosing dates and date ranges.",
   "main": "dist/index.js",
   "scripts": {
